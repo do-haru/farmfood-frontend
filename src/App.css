@@ -14,3 +14,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.AppMain {
+  flex: 1;
+  min-height: 0;
+}
