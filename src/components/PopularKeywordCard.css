@@ -1,0 +1,66 @@
+.PopularKeywordCard {
+  width: 820px;
+  max-height: 850px;
+
+  border-radius: 12px;
+  background-color: #ffffff;
+
+  padding: 32px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.PopularKeywordCard h2 {
+  color: #333333;
+  font-weight: 700;
+  font-size: 36px;
+
+  margin: 0;
+}
+
+.PopularKeywordCardTable {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.PopularKeywordCardTableHeader {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px;
+
+  padding: 16px 20px;
+
+  background-color: #f1f4f9;
+  border-radius: 10px;
+
+  color: #555555;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.PopularKeywordCardTableBody {
+  overflow-y: auto;
+}
+
+.PopularKeywordCardTableRow {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px;
+
+  padding: 18px 20px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.PopularKeywordCardTableRow:last-child {
+  border-bottom: none;
+}

@@ -1,0 +1,18 @@
+.DashboardMain {
+  flex: 1;
+  background-color: #fafafa;
+}
+
+.DashboardMainContent {
+  width: fit-content;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  background-color: aqua;
+}
+
+.DashboardMainLeft {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
