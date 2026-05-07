@@ -1,7 +1,7 @@
 import "./PopularKeywordCard.css";
 import { useEffect, useState } from "react";
 
-const PopularKeywordCard = () => {
+const PopularKeywordCard = ({ onSelectKeyword }) => {
   const [rankings, setRankings] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,11 @@ const PopularKeywordCard = () => {
 
         <div className="PopularKeywordCardTableBody">
           {rankings.map((item) => (
-            <div className="PopularKeywordCardTableRow" key={item.rank}>
+            <div
+              className="PopularKeywordCardTableRow"
+              key={item.rank}
+              onClick={() => onSelectKeyword(item.keyword)}
+            >
               <span>{item.rank}</span>
               <span>{item.keyword}</span>
               <span>{item.finalScore.toFixed(1)}</span>
