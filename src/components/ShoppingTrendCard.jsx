@@ -18,6 +18,30 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  const getDateDiff = (start, end) => {
+    const startTime = new Date(start).getTime();
+    const endTime = new Date(end).getTime();
+
+    return (endTime - startTime) / (1000 * 60 * 60 * 24) + 1;
+  };
+
+  const formatDate = (date) => {
+    return date.toISOString().slice(0, 10);
+  };
+
+  const getDefaultDateRange = () => {
+    const end = new Date();
+    end.setDate(end.getDate() - 1);
+
+    const start = new Date(end);
+    start.setDate(start.getDate() - 30);
+
+    return {
+      startDate: formatDate(start),
+      endDate: formatDate(end),
+    };
+  };
+
   useEffect(() => {
     if (!selectedKeyword) {
       setTrendData([]);
@@ -25,14 +49,26 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
       return;
     }
 
+    const defaultRange = getDefaultDateRange();
+
+    setStartDate(defaultRange.startDate);
+    setEndDate(defaultRange.endDate);
+
     fetch(
       `http://localhost:8080/api/dashboard/keywords/${selectedKeyword}/shopping-trends`,
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("쇼핑 트렌드 데이터:", data);
         setTrendData(data);
-        setFilteredTrendData(data);
+
+        const filtered = data.filter((item) => {
+          return (
+            item.period >= defaultRange.startDate &&
+            item.period <= defaultRange.endDate
+          );
+        });
+
+        setFilteredTrendData(filtered);
       })
       .catch((error) => {
         console.error("쇼핑 트렌드 조회 실패:", error);
@@ -40,6 +76,15 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
   }, [selectedKeyword]);
 
   const handleSearch = () => {
+    if (viewUnit === "daily" && startDate && endDate) {
+      const diff = getDateDiff(startDate, endDate);
+
+      if (diff > 31) {
+        alert("일간 조회는 최대 31일까지만 가능합니다.");
+        return;
+      }
+    }
+
     const filtered = trendData.filter((item) => {
       if (startDate && item.period < startDate) {
         return false;
