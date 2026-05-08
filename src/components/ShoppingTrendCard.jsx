@@ -57,9 +57,7 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
 
   return (
     <div className="ShoppingTrendCard">
-      <div className="ShoppingTrendCardHeader">
-        <h2>쇼핑 트렌드 추이</h2>
-      </div>
+      <h2>쇼핑 트렌드 추이</h2>
       <div className="ShoppingTrendCardFilter">
         <select value={viewUnit} onChange={(e) => setViewUnit(e.target.value)}>
           <option value="daily">일간</option>
@@ -89,16 +87,33 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
           <div className="ShoppingTrendChartArea">
             {trendData.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={filteredTrendData}>
+                <LineChart
+                  data={filteredTrendData}
+                  margin={{ top: 10, right: 10, left: -5, bottom: 0 }}
+                >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="period" />
-                  <YAxis />
-                  <Tooltip />
+                  <XAxis
+                    dataKey="period"
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 12, fill: "#9aa0aa" }}
+                  />
+
+                  <YAxis
+                    domain={[0, 100]}
+                    ticks={[0, 20, 40, 60, 80, 100]}
+                    width={32}
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 12, fill: "#9aa0aa" }}
+                  />
                   <Line
-                    type="monotone"
+                    type="linear"
                     dataKey="value"
-                    strokeWidth={2}
+                    strokeWidth={3}
+                    stroke="#b8bcc6"
                     dot={false}
+                    activeDot={false}
                   />
                 </LineChart>
               </ResponsiveContainer>
