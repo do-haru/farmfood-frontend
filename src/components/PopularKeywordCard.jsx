@@ -1,11 +1,11 @@
 import "./PopularKeywordCard.css";
 import { useEffect, useState } from "react";
 
-const PopularKeywordCard = ({ onSelectKeyword }) => {
+const PopularKeywordCard = ({ title, apiUrl, onSelectKeyword }) => {
   const [rankings, setRankings] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/dashboard/rankings")
+    fetch(`http://localhost:8080${apiUrl}`)
       .then((response) => response.json())
       .then((data) => {
         setRankings(data);
@@ -13,11 +13,11 @@ const PopularKeywordCard = ({ onSelectKeyword }) => {
       .catch((error) => {
         console.error("인기 키워드 조회 실패:", error);
       });
-  }, []);
+  }, [apiUrl]);
 
   return (
     <div className="PopularKeywordCard">
-      <h2>네이버 인기 키워드</h2>
+      <h2>{title}</h2>
 
       <div className="PopularKeywordCardTable">
         <div className="PopularKeywordCardTableHeader">
