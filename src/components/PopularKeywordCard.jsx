@@ -17,7 +17,7 @@ const PopularKeywordCard = ({ onSelectKeyword }) => {
 
   return (
     <div className="PopularKeywordCard">
-      <h2>인기 키워드</h2>
+      <h2>네이버 인기 키워드</h2>
 
       <div className="PopularKeywordCardTable">
         <div className="PopularKeywordCardTableHeader">

@@ -1,19 +1,19 @@
-import "./DashboardMain.css";
+import "./NaverDashboard.css";
 import PopularKeywordCard from "./PopularKeywordCard";
 import ShoppingTrendCard from "./ShoppingTrendCard";
 
 import { useEffect, useState } from "react";
 
-const DashboardMain = () => {
+const NaverDashboard = () => {
   const [selectedKeyword, setSelectedKeyword] = useState(null);
 
   return (
-    <div className="DashboardMain">
-      <div className="DashboardMainContent">
-        <div className="DashboardMainLeft">
+    <div className="NaverDashboard">
+      <div className="NaverDashboardContent">
+        <div className="NaverDashboardContentLeft">
           <PopularKeywordCard onSelectKeyword={setSelectedKeyword} />
         </div>
-        <div className="DashboardMainRight">
+        <div className="NaverDashboardContentRight">
           <ShoppingTrendCard selectedKeyword={selectedKeyword} />
         </div>
       </div>
@@ -21,4 +21,4 @@ const DashboardMain = () => {
   );
 };
 
-export default DashboardMain;
+export default NaverDashboard;
