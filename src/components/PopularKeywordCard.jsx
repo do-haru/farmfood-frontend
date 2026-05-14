@@ -1,7 +1,12 @@
 import "./PopularKeywordCard.css";
 import { useEffect, useState } from "react";
 
-const PopularKeywordCard = ({ title, apiUrl, selectedKeyword, onSelectKeyword }) => {
+const PopularKeywordCard = ({
+  title,
+  apiUrl,
+  selectedKeyword,
+  onSelectKeyword,
+}) => {
   const [rankings, setRankings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -30,30 +35,55 @@ const PopularKeywordCard = ({ title, apiUrl, selectedKeyword, onSelectKeyword })
         <div className="PopularKeywordCardTableHeader">
           <span>순위</span>
           <span>키워드</span>
-          <span>점수</span>
+          <span>변화</span>
         </div>
 
         <div className="PopularKeywordCardTableBody">
           {isLoading ? (
             <div className="PopularKeywordCardLoading">불러오는 중...</div>
           ) : isError ? (
-            <div className="PopularKeywordCardLoading">데이터를 불러올 수 없습니다.</div>
-          ) : rankings.map((item) => (
-            <div
-              className={`PopularKeywordCardTableRow${selectedKeyword === item.keyword ? " selected" : ""}`}
-              key={item.rank}
-              onClick={() => onSelectKeyword(selectedKeyword === item.keyword ? null : item.keyword)}
-            >
-              <span>{item.rank}</span>
-              <span>{item.keyword}</span>
-              <span>{item.finalScore.toFixed(1)}</span>
+            <div className="PopularKeywordCardLoading">
+              데이터를 불러올 수 없습니다.
             </div>
-          ))}
+          ) : (
+            rankings.map((item) => (
+              <div
+                className={`PopularKeywordCardTableRow${selectedKeyword === item.keyword ? " selected" : ""}`}
+                key={item.rank}
+                onClick={() =>
+                  onSelectKeyword(
+                    selectedKeyword === item.keyword ? null : item.keyword,
+                  )
+                }
+              >
+                <span>{item.rank}</span>
+                <span>{item.keyword}</span>
+                <span
+                  className={
+                    item.rankChange === null
+                      ? "rank-new"
+                      : item.rankChange > 0
+                        ? "rank-up"
+                        : item.rankChange < 0
+                          ? "rank-down"
+                          : "rank-same"
+                  }
+                >
+                  {item.rankChange === null
+                    ? "NEW"
+                    : item.rankChange > 0
+                      ? `▲${item.rankChange}`
+                      : item.rankChange < 0
+                        ? `▼${Math.abs(item.rankChange)}`
+                        : "-"}
+                </span>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>
   );
-
 };
 
 export default PopularKeywordCard;
