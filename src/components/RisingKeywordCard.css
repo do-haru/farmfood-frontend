@@ -26,6 +26,29 @@
   align-items: center;
 }
 
+.RisingKeywordCardTable {
+  display: flex;
+  flex-direction: column;
+}
+
+.RisingKeywordCardTableHeader {
+  display: grid;
+  grid-template-columns: 48px 1fr 80px;
+
+  padding: 12px 16px;
+
+  background-color: #d9d9d9;
+  border-radius: 10px;
+
+  color: #333333;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.RisingKeywordCardTableHeader span:last-child {
+  text-align: right;
+}
+
 .RisingKeywordCardList {
   display: flex;
   flex-direction: column;
@@ -72,6 +95,30 @@
   padding: 16px;
   color: #aaaaaa;
   font-size: 14px;
+}
+
+.RisingKeywordCardEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 24px 16px;
+
+  color: #aaaaaa;
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.RisingKeywordCardEmpty span {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.RisingKeywordCardEmpty p {
+  margin: 0;
 }
 
 .RisingKeywordCardRate {

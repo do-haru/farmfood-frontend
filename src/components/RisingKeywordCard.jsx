@@ -30,11 +30,24 @@ const RisingKeywordCard = ({ apiUrl = "/api/dashboard/rising-keywords/naver", de
         {description && <InfoTooltip text={description} />}
       </h2>
 
-      <div className="RisingKeywordCardList">
+      <div className="RisingKeywordCardTable">
+        <div className="RisingKeywordCardTableHeader">
+          <span>순위</span>
+          <span>키워드</span>
+          <span>증가율</span>
+        </div>
+
+        <div className="RisingKeywordCardList">
         {isLoading ? (
           <div className="RisingKeywordCardLoading">불러오는 중...</div>
         ) : isError ? (
           <div className="RisingKeywordCardLoading">데이터를 불러올 수 없습니다.</div>
+        ) : risingKeywords.length === 0 ? (
+          <div className="RisingKeywordCardEmpty">
+            <span>📊</span>
+            <p>아직 비교할 데이터가 없어요</p>
+            <p>지표를 한 번 더 수집하면 표시됩니다</p>
+          </div>
         ) : risingKeywords.map((item, index) => (
           <div className={`RisingKeywordCardRow${selectedKeyword === item.keyword ? " selected" : ""}`} key={item.keyword} onClick={() => onSelectKeyword(selectedKeyword === item.keyword ? null : item.keyword)}>
             <span className="RisingKeywordCardRank">{index + 1}위</span>
@@ -46,6 +59,7 @@ const RisingKeywordCard = ({ apiUrl = "/api/dashboard/rising-keywords/naver", de
             </span>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );
