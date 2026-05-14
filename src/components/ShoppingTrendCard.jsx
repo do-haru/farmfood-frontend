@@ -102,7 +102,12 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
 
   return (
     <div className="ShoppingTrendCard">
-      <h2>쇼핑 트렌드 추이</h2>
+      <h2>
+        {selectedKeyword && (
+          <span className="ShoppingTrendCardKeyword">{selectedKeyword}</span>
+        )}
+        쇼핑 트렌드
+      </h2>
       <div className="ShoppingTrendCardFilter">
         <select value={viewUnit} onChange={(e) => setViewUnit(e.target.value)}>
           <option value="daily">일간</option>

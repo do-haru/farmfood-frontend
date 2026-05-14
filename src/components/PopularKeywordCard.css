@@ -59,7 +59,12 @@
   overflow-y: auto;
 }
 
+.PopularKeywordCardTableRow:hover {
+  background-color: #f5f5f5;
+}
+
 .PopularKeywordCardTableRow {
+  cursor: pointer;
   display: grid;
   grid-template-columns: 80px 1fr 120px;
 
@@ -74,4 +79,9 @@
 
 .PopularKeywordCardTableRow:last-child {
   border-bottom: none;
+}
+
+.PopularKeywordCardTableRow.selected {
+  background-color: #e8f4e8;
+  font-weight: 700;
 }

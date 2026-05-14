@@ -1,7 +1,7 @@
 import "./RisingKeywordCard.css";
 import { useEffect, useState } from "react";
 
-const RisingKeywordCard = () => {
+const RisingKeywordCard = ({ selectedKeyword, onSelectKeyword }) => {
   const [risingKeywords, setRisingKeywords] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const RisingKeywordCard = () => {
 
       <div className="RisingKeywordCardList">
         {risingKeywords.map((item, index) => (
-          <div className="RisingKeywordCardRow" key={item.keyword}>
+          <div className={`RisingKeywordCardRow${selectedKeyword === item.keyword ? " selected" : ""}`} key={item.keyword} onClick={() => onSelectKeyword(item.keyword)}>
             <span className="RisingKeywordCardRank">{index + 1}위</span>
             <span className="RisingKeywordCardKeyword">{item.keyword}</span>
             <span className="RisingKeywordCardRate">

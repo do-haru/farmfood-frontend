@@ -1,7 +1,7 @@
 import "./PopularKeywordCard.css";
 import { useEffect, useState } from "react";
 
-const PopularKeywordCard = ({ title, apiUrl, onSelectKeyword }) => {
+const PopularKeywordCard = ({ title, apiUrl, selectedKeyword, onSelectKeyword }) => {
   const [rankings, setRankings] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const PopularKeywordCard = ({ title, apiUrl, onSelectKeyword }) => {
         <div className="PopularKeywordCardTableBody">
           {rankings.map((item) => (
             <div
-              className="PopularKeywordCardTableRow"
+              className={`PopularKeywordCardTableRow${selectedKeyword === item.keyword ? " selected" : ""}`}
               key={item.rank}
               onClick={() => onSelectKeyword(item.keyword)}
             >
