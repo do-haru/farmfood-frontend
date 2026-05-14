@@ -5,10 +5,18 @@
   background-color: #fafafa;
 
   position: relative;
+
+  overflow-y: auto;
+}
+
+.NaverDashboardContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .NaverDashboardLastUpdated {
-  position: absolute;
+  position: fixed;
   bottom: 16px;
   right: 24px;
 
@@ -16,17 +24,19 @@
   font-size: 12px;
 }
 
-.NaverDashboardContent {
+.NaverDashboardContentTop {
   width: fit-content;
-  height: 100%;
 
   display: flex;
   align-items: center;
   gap: 30px;
   margin: 0 auto;
 
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   box-sizing: border-box;
+
+  height: 100vh;
+  min-height: 600px;
 }
 
 .NaverDashboardContentLeft {
@@ -42,4 +52,13 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
+}
+
+.NaverDashboardContentBottom {
+  width: fit-content;
+  min-width: calc(820px + 500px + 30px);
+
+  margin: 20px auto;
+  padding: 0 20px 40px 20px;
+  box-sizing: border-box;
 }

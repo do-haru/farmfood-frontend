@@ -1,0 +1,128 @@
+.NaverBlogResultCard {
+  width: 100%;
+
+  background-color: #ffffff;
+  border-radius: 12px;
+
+  padding: 28px 32px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.NaverBlogResultCard h3 {
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #333333;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.NaverBlogResultCardKeyword {
+  background-color: #e8f4e8;
+  color: #2e7d32;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.NaverBlogResultCardList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.NaverBlogResultCardItem {
+  width: 287px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #eeeeee;
+
+  text-decoration: none;
+  color: inherit;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.NaverBlogResultCardItem:hover {
+  background-color: #f5f5f5;
+  border-color: #dddddd;
+}
+
+.NaverBlogResultCardItemTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a73e8;
+  line-height: 1.4;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.NaverBlogResultCardItemDesc {
+  font-size: 12px;
+  color: #555555;
+  line-height: 1.4;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.NaverBlogResultCardItemDate {
+  font-size: 11px;
+  color: #aaaaaa;
+  margin-top: 2px;
+}
+
+.NaverBlogResultCardBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NaverBlogResultCardEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  color: #aaaaaa;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.6;
+  padding: 8px 0;
+}
+
+.NaverBlogResultCardEmpty p {
+  margin: 0;
+}
+
+.NaverBlogResultCardEmptyIcon {
+  margin-right: 4px;
+}
+
+.NaverBlogResultCardMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: #aaaaaa;
+  font-size: 14px;
+}
