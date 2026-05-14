@@ -14,6 +14,8 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
   const [trendData, setTrendData] = useState([]);
   const [filteredTrendData, setFilteredTrendData] = useState([]);
   const [viewUnit, setViewUnit] = useState("daily");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -53,6 +55,8 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
 
     setStartDate(defaultRange.startDate);
     setEndDate(defaultRange.endDate);
+    setIsLoading(true);
+    setIsError(false);
 
     fetch(
       `http://localhost:8080/api/dashboard/keywords/${selectedKeyword}/shopping-trends`,
@@ -72,6 +76,10 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
       })
       .catch((error) => {
         console.error("쇼핑 트렌드 조회 실패:", error);
+        setIsError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [selectedKeyword]);
 
@@ -135,7 +143,11 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
       <div className="ShoppingTrendCardBody">
         {selectedKeyword ? (
           <div className="ShoppingTrendChartArea">
-            {trendData.length > 0 ? (
+            {isLoading ? (
+              <div className="ShoppingTrendCardLoading">불러오는 중...</div>
+            ) : isError ? (
+              <div className="ShoppingTrendCardLoading">데이터를 불러올 수 없습니다.</div>
+            ) : trendData.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                   data={filteredTrendData}
@@ -168,7 +180,7 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <div>쇼핑 트렌드 데이터가 없습니다.</div>
+              <div className="ShoppingTrendCardLoading">쇼핑 트렌드 데이터가 없습니다.</div>
             )}
           </div>
         ) : (

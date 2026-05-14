@@ -62,6 +62,15 @@
   font-weight: 700;
 }
 
+.RisingKeywordCardLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  color: #aaaaaa;
+  font-size: 14px;
+}
+
 .RisingKeywordCardRate {
   color: #e53935;
   font-weight: 700;

@@ -3,10 +3,28 @@ import PopularKeywordCard from "./PopularKeywordCard";
 import RisingKeywordCard from "./RisingKeywordCard";
 import ShoppingTrendCard from "./ShoppingTrendCard";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const getTimeAgo = (dateStr) => {
+  const diff = Math.floor((new Date() - new Date(dateStr)) / 1000);
+  if (diff < 60) return "방금 전";
+  if (diff < 3600) return `${Math.floor(diff / 60)}분 전`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)}시간 전`;
+  return `${Math.floor(diff / 86400)}일 전`;
+};
 
 const NaverDashboard = () => {
   const [selectedKeyword, setSelectedKeyword] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/dashboard/rankings/naver")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.length > 0) setLastUpdated(data[0].rankedAt);
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <div className="NaverDashboard">
@@ -24,6 +42,11 @@ const NaverDashboard = () => {
           <ShoppingTrendCard selectedKeyword={selectedKeyword} />
         </div>
       </div>
+      {lastUpdated && (
+        <div className="NaverDashboardLastUpdated">
+          마지막 업데이트: {getTimeAgo(lastUpdated)}
+        </div>
+      )}
     </div>
   );
 };

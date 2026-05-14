@@ -123,6 +123,15 @@
 .ShoppingTrendChartArea {
   width: 100%;
   height: 260px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ShoppingTrendCardLoading {
+  color: #aaaaaa;
+  font-size: 14px;
 }
 
 .ShoppingTrendCardEmpty {

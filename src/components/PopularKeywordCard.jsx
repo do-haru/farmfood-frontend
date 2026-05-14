@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 
 const PopularKeywordCard = ({ title, apiUrl, selectedKeyword, onSelectKeyword }) => {
   const [rankings, setRankings] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(`http://localhost:8080${apiUrl}`)
       .then((response) => response.json())
       .then((data) => {
@@ -12,6 +15,10 @@ const PopularKeywordCard = ({ title, apiUrl, selectedKeyword, onSelectKeyword })
       })
       .catch((error) => {
         console.error("인기 키워드 조회 실패:", error);
+        setIsError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [apiUrl]);
 
@@ -27,11 +34,15 @@ const PopularKeywordCard = ({ title, apiUrl, selectedKeyword, onSelectKeyword })
         </div>
 
         <div className="PopularKeywordCardTableBody">
-          {rankings.map((item) => (
+          {isLoading ? (
+            <div className="PopularKeywordCardLoading">불러오는 중...</div>
+          ) : isError ? (
+            <div className="PopularKeywordCardLoading">데이터를 불러올 수 없습니다.</div>
+          ) : rankings.map((item) => (
             <div
               className={`PopularKeywordCardTableRow${selectedKeyword === item.keyword ? " selected" : ""}`}
               key={item.rank}
-              onClick={() => onSelectKeyword(item.keyword)}
+              onClick={() => onSelectKeyword(selectedKeyword === item.keyword ? null : item.keyword)}
             >
               <span>{item.rank}</span>
               <span>{item.keyword}</span>
@@ -42,6 +53,7 @@ const PopularKeywordCard = ({ title, apiUrl, selectedKeyword, onSelectKeyword })
       </div>
     </div>
   );
+
 };
 
 export default PopularKeywordCard;

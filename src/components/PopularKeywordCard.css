@@ -85,3 +85,12 @@
   background-color: #e8f4e8;
   font-weight: 700;
 }
+
+.PopularKeywordCardLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #aaaaaa;
+  font-size: 14px;
+}
