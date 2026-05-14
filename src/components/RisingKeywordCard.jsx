@@ -1,14 +1,14 @@
 import "./RisingKeywordCard.css";
 import { useEffect, useState } from "react";
 
-const RisingKeywordCard = ({ selectedKeyword, onSelectKeyword }) => {
+const RisingKeywordCard = ({ apiUrl = "/api/dashboard/rising-keywords/naver", selectedKeyword, onSelectKeyword }) => {
   const [risingKeywords, setRisingKeywords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:8080/api/dashboard/rising-keywords/naver")
+    fetch(`http://localhost:8080${apiUrl}`)
       .then((response) => response.json())
       .then((data) => {
         setRisingKeywords(data);
@@ -20,7 +20,7 @@ const RisingKeywordCard = ({ selectedKeyword, onSelectKeyword }) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [apiUrl]);
 
   return (
     <div className="RisingKeywordCard">

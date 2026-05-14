@@ -87,16 +87,19 @@
 }
 
 .rank-up {
+  margin-left: 18px;
   color: #e53935;
   font-weight: 700;
 }
 
 .rank-down {
+  margin-left: 18px;
   color: #1e88e5;
   font-weight: 700;
 }
 
 .rank-same {
+  margin-left: 18px;
   color: #aaaaaa;
 }
 
