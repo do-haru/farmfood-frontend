@@ -1,8 +1,9 @@
 import "./NaverDashboard.css";
 import PopularKeywordCard from "./PopularKeywordCard";
+import RisingKeywordCard from "./RisingKeywordCard";
 import ShoppingTrendCard from "./ShoppingTrendCard";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const NaverDashboard = () => {
   const [selectedKeyword, setSelectedKeyword] = useState(null);
@@ -18,6 +19,7 @@ const NaverDashboard = () => {
           />
         </div>
         <div className="NaverDashboardContentRight">
+          <RisingKeywordCard />
           <ShoppingTrendCard selectedKeyword={selectedKeyword} />
         </div>
       </div>
