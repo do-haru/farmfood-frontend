@@ -32,13 +32,18 @@ const NaverDashboard = () => {
         <div className="NaverDashboardContentLeft">
           <PopularKeywordCard
             title="🏆 네이버 인기 키워드"
+            description="네이버 전반에서 수집한 콘텐츠를 분석해 요즘 사람들의 관심을 가장 많이 받고 있는 식품 키워드입니다."
             apiUrl="/api/dashboard/rankings/naver"
             selectedKeyword={selectedKeyword}
             onSelectKeyword={setSelectedKeyword}
           />
         </div>
         <div className="NaverDashboardContentRight">
-          <RisingKeywordCard selectedKeyword={selectedKeyword} onSelectKeyword={setSelectedKeyword} />
+          <RisingKeywordCard
+            description="최근 7일간 네이버 쇼핑 트렌드 지수 평균과 직전 7일 평균을 비교하여, 증가율이 가장 높은 상위 5개 키워드입니다."
+            selectedKeyword={selectedKeyword}
+            onSelectKeyword={setSelectedKeyword}
+          />
           <ShoppingTrendCard selectedKeyword={selectedKeyword} />
         </div>
       </div>

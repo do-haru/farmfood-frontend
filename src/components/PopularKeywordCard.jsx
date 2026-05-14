@@ -1,8 +1,10 @@
 import "./PopularKeywordCard.css";
+import InfoTooltip from "./InfoTooltip";
 import { useEffect, useState } from "react";
 
 const PopularKeywordCard = ({
   title,
+  description,
   apiUrl,
   selectedKeyword,
   onSelectKeyword,
@@ -29,7 +31,10 @@ const PopularKeywordCard = ({
 
   return (
     <div className="PopularKeywordCard">
-      <h2>{title}</h2>
+      <h2>
+        {title}
+        {description && <InfoTooltip text={description} />}
+      </h2>
 
       <div className="PopularKeywordCardTable">
         <div className="PopularKeywordCardTableHeader">

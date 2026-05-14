@@ -1,5 +1,9 @@
 import "./ShoppingTrendCard.css";
+import InfoTooltip from "./InfoTooltip";
 import { useEffect, useState } from "react";
+
+const SHOPPING_TREND_DESCRIPTION =
+  "네이버 데이터랩 쇼핑 트렌드의 상대적 검색량 지수입니다. 기간 내 최대값을 100으로 환산한 값입니다";
 import {
   LineChart,
   Line,
@@ -115,6 +119,7 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
           <span className="ShoppingTrendCardKeyword">{selectedKeyword}</span>
         )}
         쇼핑 트렌드
+        <InfoTooltip text={SHOPPING_TREND_DESCRIPTION} />
       </h2>
       <div className="ShoppingTrendCardFilter">
         <select value={viewUnit} onChange={(e) => setViewUnit(e.target.value)}>
@@ -146,7 +151,9 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
             {isLoading ? (
               <div className="ShoppingTrendCardLoading">불러오는 중...</div>
             ) : isError ? (
-              <div className="ShoppingTrendCardLoading">데이터를 불러올 수 없습니다.</div>
+              <div className="ShoppingTrendCardLoading">
+                데이터를 불러올 수 없습니다.
+              </div>
             ) : trendData.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
@@ -180,12 +187,17 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <div className="ShoppingTrendCardLoading">쇼핑 트렌드 데이터가 없습니다.</div>
+              <div className="ShoppingTrendCardLoading">
+                쇼핑 트렌드 데이터가 없습니다.
+              </div>
             )}
           </div>
         ) : (
           <div className="ShoppingTrendCardEmpty">
-            <p><span className="ShoppingTrendCardEmptyIcon">📊</span> 키워드를 선택하면</p>
+            <p>
+              <span className="ShoppingTrendCardEmptyIcon">📊</span> 키워드를
+              선택하면
+            </p>
             <p>쇼핑 트렌드를 확인할 수 있어요</p>
           </div>
         )}

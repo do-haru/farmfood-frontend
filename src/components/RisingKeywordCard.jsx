@@ -1,7 +1,8 @@
 import "./RisingKeywordCard.css";
+import InfoTooltip from "./InfoTooltip";
 import { useEffect, useState } from "react";
 
-const RisingKeywordCard = ({ apiUrl = "/api/dashboard/rising-keywords/naver", selectedKeyword, onSelectKeyword }) => {
+const RisingKeywordCard = ({ apiUrl = "/api/dashboard/rising-keywords/naver", description, selectedKeyword, onSelectKeyword }) => {
   const [risingKeywords, setRisingKeywords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -24,7 +25,10 @@ const RisingKeywordCard = ({ apiUrl = "/api/dashboard/rising-keywords/naver", se
 
   return (
     <div className="RisingKeywordCard">
-      <h2>🔥 급상승 키워드</h2>
+      <h2>
+        🔥 급상승 키워드
+        {description && <InfoTooltip text={description} />}
+      </h2>
 
       <div className="RisingKeywordCardList">
         {isLoading ? (

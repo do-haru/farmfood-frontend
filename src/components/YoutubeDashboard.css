@@ -1,8 +1,19 @@
 .YoutubeDashboard {
   width: 100%;
   height: 100%;
-  position: relative;
+
   background-color: #fafafa;
+
+  position: relative;
+}
+
+.YoutubeDashboardLastUpdated {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+
+  color: #aaaaaa;
+  font-size: 12px;
 }
 
 .YoutubeDashboardContent {
