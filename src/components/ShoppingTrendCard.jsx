@@ -172,7 +172,10 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
             )}
           </div>
         ) : (
-          <div>키워드를 선택하세요</div>
+          <div className="ShoppingTrendCardEmpty">
+            <p><span className="ShoppingTrendCardEmptyIcon">📊</span> 키워드를 선택하면</p>
+            <p>쇼핑 트렌드를 확인할 수 있어요</p>
+          </div>
         )}
       </div>
     </div>

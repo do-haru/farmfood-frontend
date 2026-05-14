@@ -1,6 +1,6 @@
 import "./Header.css";
 import logo_text from "../assets/logo_text.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,13 +9,13 @@ const Header = () => {
         <img className="HeaderLogoText" src={logo_text} alt="생활곳간" />
       </div>
       <div className="HeaderMenu">
-        <Link className="HeaderMenuButton" to="/naver">
+        <NavLink className={({ isActive }) => `HeaderMenuButton${isActive ? " active" : ""}`} to="/naver">
           네이버
-        </Link>
+        </NavLink>
 
-        <Link className="HeaderMenuButton" to="/youtube">
+        <NavLink className={({ isActive }) => `HeaderMenuButton${isActive ? " active" : ""}`} to="/youtube">
           유튜브
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

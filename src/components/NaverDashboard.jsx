@@ -13,7 +13,7 @@ const NaverDashboard = () => {
       <div className="NaverDashboardContent">
         <div className="NaverDashboardContentLeft">
           <PopularKeywordCard
-            title="네이버 인기 키워드"
+            title="🏆 네이버 인기 키워드"
             apiUrl="/api/dashboard/rankings/naver"
             selectedKeyword={selectedKeyword}
             onSelectKeyword={setSelectedKeyword}

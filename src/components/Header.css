@@ -36,9 +36,16 @@
 .HeaderMenuButton {
   border: none;
   background-color: transparent;
-  color: #555555;
+  color: #aaaaaa;
   font-size: 25px;
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
+}
+
+.HeaderMenuButton.active {
+  color: #186d57;
+  font-weight: 700;
+  border-bottom: 3px solid #186d57;
+  padding-bottom: 4px;
 }

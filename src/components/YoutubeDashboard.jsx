@@ -11,7 +11,7 @@ const YoutubeDashboard = () => {
       <div className="YoutubeDashboardContent">
         <div className="YoutubeDashboardContentLeft">
           <PopularKeywordCard
-            title="유튜브 인기 키워드"
+            title="🏆 유튜브 인기 키워드"
             apiUrl="/api/dashboard/rankings/youtube"
             onSelectKeyword={setSelectedKeyword}
           />
