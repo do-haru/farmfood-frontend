@@ -35,7 +35,6 @@
   padding: 20px 20px 0 20px;
   box-sizing: border-box;
 
-  height: 100vh;
   min-height: 600px;
 }
 
@@ -56,7 +55,6 @@
 
 .NaverDashboardContentBottom {
   width: fit-content;
-  min-width: calc(820px + 500px + 30px);
 
   margin: 20px auto;
   padding: 0 20px 40px 20px;
