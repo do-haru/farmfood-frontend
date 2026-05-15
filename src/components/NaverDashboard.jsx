@@ -38,6 +38,7 @@ const NaverDashboard = () => {
               apiUrl="/api/dashboard/rankings/naver"
               selectedKeyword={selectedKeyword}
               onSelectKeyword={setSelectedKeyword}
+              showPeriodTabs={true}
             />
           </div>
           <div className="NaverDashboardContentRight">
