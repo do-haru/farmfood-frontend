@@ -3,7 +3,7 @@ import InfoTooltip from "./InfoTooltip";
 import { useEffect, useState } from "react";
 
 const SHOPPING_TREND_DESCRIPTION =
-  "네이버 데이터랩 쇼핑 트렌드의 상대적 검색량 지수입니다. 기간 내 최대값을 100으로 환산한 값입니다";
+  "네이버 데이터랩 쇼핑 트렌드 지수와 네이버 월간 검색수를 기반으로 추정한 일별 검색량입니다. 검색수 데이터가 없을 경우 상대지수(0~100)로 표시됩니다.";
 import {
   LineChart,
   Line,
@@ -169,12 +169,14 @@ const ShoppingTrendCard = ({ selectedKeyword }) => {
                   />
 
                   <YAxis
-                    domain={[0, 100]}
-                    ticks={[0, 20, 40, 60, 80, 100]}
-                    width={32}
+                    width={52}
                     axisLine={false}
                     tickLine={false}
                     tick={{ fontSize: 12, fill: "#9aa0aa" }}
+                    tickFormatter={(v) => v >= 1000 ? `${(v / 1000).toFixed(0)}k` : v}
+                  />
+                  <Tooltip
+                    formatter={(v) => [`${Number(v).toLocaleString()}건`, "검색량"]}
                   />
                   <Line
                     type="linear"

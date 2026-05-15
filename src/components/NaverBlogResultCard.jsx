@@ -2,8 +2,8 @@ import "./NaverBlogResultCard.css";
 import { useEffect, useState } from "react";
 
 const TABS = [
-  { key: "blog", label: "블로그", endpoint: "blog-contents" },
   { key: "news", label: "뉴스", endpoint: "news-contents" },
+  { key: "blog", label: "블로그", endpoint: "blog-contents" },
   { key: "cafe", label: "카페", endpoint: "cafe-contents" },
   { key: "shopping", label: "쇼핑", endpoint: "shopping-contents" },
 ];
@@ -24,7 +24,7 @@ const NaverBlogResultCard = ({ selectedKeyword }) => {
     setContents([]);
 
     fetch(
-      `http://localhost:8080/api/dashboard/keywords/${selectedKeyword}/${currentTab.endpoint}`
+      `http://localhost:8080/api/dashboard/keywords/${selectedKeyword}/${currentTab.endpoint}`,
     )
       .then((res) => res.json())
       .then((data) => setContents(data))
@@ -37,7 +37,9 @@ const NaverBlogResultCard = ({ selectedKeyword }) => {
       <div className="NaverBlogResultCardHeader">
         <h3>
           {selectedKeyword && (
-            <span className="NaverBlogResultCardKeyword">{selectedKeyword}</span>
+            <span className="NaverBlogResultCardKeyword">
+              {selectedKeyword}
+            </span>
           )}
           네이버 검색 결과
         </h3>
@@ -58,8 +60,8 @@ const NaverBlogResultCard = ({ selectedKeyword }) => {
         {!selectedKeyword ? (
           <div className="NaverBlogResultCardEmpty">
             <p>
-              <span className="NaverBlogResultCardEmptyIcon">📝</span>{" "}
-              키워드를 선택하면
+              <span className="NaverBlogResultCardEmptyIcon">📝</span> 키워드를
+              선택하면
             </p>
             <p>네이버 검색 결과를 확인할 수 있어요</p>
           </div>

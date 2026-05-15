@@ -1,5 +1,6 @@
 .NaverBlogResultCard {
   width: calc(820px + 500px + 30px);
+  height: 280px;
 
   background-color: #ffffff;
   border-radius: 12px;
